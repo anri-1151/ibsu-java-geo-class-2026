@@ -32,6 +32,7 @@ public class UserService {
 
     public AuthenticationResponse register(RegistrationRequest data) throws Exception {
         GeneralUtil.checkRequiredProperties(data, List.of("firstName", "lastName", "email", "password"));
+
         User user = new User();
         GeneralUtil.getCopyOf(data, user, "password");
         user.setPassword(passwordEncoder.encode(data.getPassword()));
